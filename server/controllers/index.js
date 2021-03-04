@@ -58,6 +58,20 @@ class Controller {
             })
     }
 
+    static getCovidData(req, res){
+        axios({
+            method: 'GET',
+            url: "https://data.covid19.go.id/public/api/update.json"
+        })
+            .then(totals =>{
+                const {data} = totals;
+                res.status(200).json(data.update.total);
+            })
+            .catch(err =>{
+                res.status(500).json(err);
+            })
+    }
+
 }
 
 module.exports = Controller
