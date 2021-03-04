@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "fajarwirazdi",
-    "password": null,
+    "password": "root",
     "database": "covidportal",
-    "host": "127.0.0.1",
+    "host": "localhost",
     "dialect": "postgres"
   },
   "test": {
@@ -12,6 +12,7 @@
     "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
+
   },
   "production": {
     "username": "root",
