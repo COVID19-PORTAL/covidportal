@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "fajarwirazdi",
-    "password": null,
+    "username": "postgres",
+    "password": "root",
     "database": "covidportal",
     "host": "127.0.0.1",
     "dialect": "postgres"
