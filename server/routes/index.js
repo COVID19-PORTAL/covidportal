@@ -4,8 +4,12 @@ const authentication = require('../middlewares/auth')
 
 // router.use()
 router.post('/register', Controller.register)
-router.post('/login', Controller.login)
-router.get('/covid', authentication, Controller.findAll)
+router.post('/login', Controller.login);
+router.use(authentication);
+router.get('/covid/total', Controller.getCovidData);
+router.get('/news', Controller.viewHealthNews);
+router.get('/covid', Controller.findAll)
+router.get('/hospital/:province', Controller.getHospital);
 
 
 module.exports = router
