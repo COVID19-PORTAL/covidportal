@@ -5,6 +5,7 @@ const count = require('../helpers/count-percentage-of-covid');
 const filter = require('../helpers/filter-province');
 const random = require('../helpers/pick-random-news')
 const { generate } = require('../helpers/verifyToken')
+const {OAuth2Client} = require('google-auth-library')
 
 class Controller {  
     static register(req, res) {
@@ -49,6 +50,35 @@ class Controller {
             .catch(err => {
                 res.status(500).json(err)
             })
+    }
+
+    static googleLogin(req, res) {
+        const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID)
+        async function verify(){
+            const ticket = await client.verifyIdToken({
+                idToken: req.body.token,
+                audience: process.env.GOOGLE_CLIENT_ID
+            })
+            const googleUserParams = ticket.getPayload()
+
+            User.findOrCreate({
+                where: {
+                    email: googleUserParams.email
+                },
+                defaults: {
+                    password: (new Date()).toDateString()
+                }
+            })
+            .then(user => {
+                let payload = {id: user.id, email: user.email}
+                res.status(200).json({
+                    id: payload.id,
+                    email: payload.email,
+                    access_token: generateToken(payload)
+                })
+            })
+        }
+        verify().catch(console.error)
     }
 
     static findAll(req, res) {

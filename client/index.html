@@ -5,6 +5,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="486484357060-ea9qje9ra12tctdgrkti8cvf051292j0.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
@@ -15,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style/styyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Todo App</title>
+    <title>Portal Covid</title>
 </head>
 
 <body>
@@ -51,8 +54,14 @@
 
                             <button type="submit" id="btn-submit" class="btn btn-primary col-12 py-2">Submit</button>
                         </form>
-
-
+                        <br>
+                        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                        <br>
+                        <button onclick="signOut()">Logout</button>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" 
+                            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" 
+                            crossorigin="anonymous">
+                        </script>
                     </div>
                 </div>
             </div>
@@ -90,7 +99,14 @@
                             </div>
                             <button type="submit" class="btn btn-primary col-12 py-2" id="create-member">Submit</button>
                         </form>
-
+                        <br>
+                        <div class="g-signin2" id="btn-submit" data-onsuccess="onSignIn"></div>
+                        <br>
+                        <button onclick="signOut()">Logout</button>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" 
+                            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" 
+                            crossorigin="anonymous">
+                        </script>
                     </div>
                 </div>
             </div>
@@ -269,5 +285,4 @@
     <script src="./main.js"></script>
 
 </body>
-
 </html>
