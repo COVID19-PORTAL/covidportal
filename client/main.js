@@ -221,3 +221,4 @@ function checkLocalStorage(){
         $("#rumah-sakit").hide();
     }
 }
+})
