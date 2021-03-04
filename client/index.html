@@ -101,8 +101,8 @@
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg navbar-light bg-nav sticky-top">
                 <div class="container-fluid">
-                    <span class="navbar-brand mb-0 h1 ">
-                        <h3 class="font-weight-bold" style="color: #F2C84C;">Covid-Portal·</h3>
+                    <span class="navbar-brand mb-0 h1 "> 
+                        <a href="" id="home" style="text-decoration: none;"> <h3 class="font-weight-bold" style="color: #F2C84C;">Covid-Portal·</h3> </a>
                     </span>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -111,7 +111,7 @@
                     <div class="collapse navbar-collapse " id="navbarNav">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item px-5">
-                                <button id="logout" type="button" class="btn btn-transparant font-weight-normal mx-5"><a href="#" id="logout" style="color: white; text-decoration: none;">
+                                <button id="logout" type="button" class="btn btn-outline-info font-weight-normal mx-5"><a href="#" id="logout" style="color: white; text-decoration: none;">
                                         <h5>Logout</h5>
                                     </a></button>
                             </li>
@@ -139,21 +139,21 @@
                 <div class="row mx-2">
                     <div class="col-4">
                         <div class="box-card1">
-                            <p class="text-white">Total Positif</p>
+                            <p class="text-white font-weight-bold lead">Total Positif</p>
                             <h1 class="text-white" id="data-positif"></h1>
                             <p class="text-white">Orang</p>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="box-card2">
-                            <p class="text-white">Total Sembuh</p>
+                            <p class="text-white font-weight-bold lead">Total Sembuh</p>
                             <h1 class="text-white" id="data-sembuh"></h1>
                             <p class="text-white">Orang</p>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="box-card3">
-                            <p class="text-white">Total Meninggal</p>
+                            <p class="text-white font-weight-bold lead">Total Meninggal</p>
                             <h1 class="text-white" id="data-meninggal"></h1>
                             <p class="text-white">Orang</p>
                         </div>
@@ -187,6 +187,7 @@
                         <tbody id="data-covid">
                         </tbody>
                     </table>
+                    <footer class="blockquote-footer">Persentase Kasus dihasilkan dari total pasien positif dibandingkan dengan total penduduk setiap provinsi</cite></footer>
                 </div>
             </div>
         </div>
@@ -200,6 +201,26 @@
 
         <!-- Rumah Sakit Info -->
     <div id="rumah-sakit">
+        <nav class="navbar navbar-expand-lg navbar-light bg-nav sticky-top">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1 ">
+                    <a href="" id="home-rs" style="text-decoration: none;"> <h3 class="font-weight-bold" style="color: #F2C84C;">Covid-Portal·</h3> </a>
+                </span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item px-5">
+                            <button id="logout-rs" type="button" class="btn btn-outline-info font-weight-normal mx-5"><a href="#" id="logout" style="color: white; text-decoration: none;">
+                                    <h5>Logout</h5>
+                                </a></button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
             <div class="mx-5"><div class="mt-5 pt-5" id="judul-rs">
                
             </div>

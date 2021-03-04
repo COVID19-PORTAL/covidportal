@@ -35,6 +35,30 @@ $("document").ready(()=>{
         e.preventDefault();
         logout();
     })
+
+    $("#logout-rs").on("click", (e) => {
+        e.preventDefault();
+        logout();
+    })
+
+    $("#home").on("click", (e) =>{
+        e.preventDefault();
+        $("#login-page").hide();
+        $("#register-page").hide();
+        $("#home-page").show();
+        $("#rumah-sakit").hide();
+    })
+
+    $("#home-rs").on("click", (e) =>{
+        e.preventDefault();
+        $("#login-page").hide();
+        $("#register-page").hide();
+        $("#home-page").show();
+        $("#rumah-sakit").hide();
+        $("#judul-rs").empty();
+        $("#data-hospital").empty();
+    })
+    
 })
 
 function login(){
@@ -138,6 +162,7 @@ function getDataCovidProvince(){
 }
 
 function getDataHospital(province){
+    $("#news").empty();
     $("#login-page").hide();
     $("#register-page").hide();
     $("#home-page").hide();
@@ -182,12 +207,12 @@ function getDataHospital(province){
                 $("#news").append(`
                 <div class="col-6">
                     <div class="card mb-5 mx-auto" style="width: 25rem;">
-                        <a href="${e.url}"><img src="${e.urlToImage}"
+                        <a href="${e.url}" target="_blank"><img src="${e.urlToImage}"
                             class="card-img-top h-100 py-3 px-3 w-100" alt="..."></a>
                         <div class="card-body ">
                             <div class="d-flex justify-content-between">
                                 <div>
-                                    <a class="card-text" href="${e.url}" style="text-decoration: none;">${e.title}</a>
+                                    <a class="card-text" href="${e.url}" target="_blank" style="text-decoration: none;">${e.title}</a>
                                     <h6 class="card-text mt-3 font-weight-light" style="color: #ADADAD;">
                                         ${e.publishedAt.split('T')[0]}
                                     </h6>
