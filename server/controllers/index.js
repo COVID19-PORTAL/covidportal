@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 const {User} = require('../models')
 const {comparePassword} = require('../helpers/passwordHelper')
+const authentication = require('../middlewares/auth')
 
 class Controller {
 
