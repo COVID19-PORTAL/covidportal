@@ -70,12 +70,19 @@ function login(){
         }
     })
         .done((response) => {
+            // console.log(response, '<<<<<');
+            Swal.fire('Welcome', 'success login','success')
             localStorage.setItem("access_token", response.token);
             checkLocalStorage();
             getDataTotalCovid();
             getDataCovidProvince();
         })
         .fail((err) => {
+            if(!email || !password){
+                Swal.fire('Error', 'email or password is required','error')
+            }else{
+                Swal.fire('Error', 'email or password invalid','error')
+            }
             console.log(err);
         })
         .always(()=> {
@@ -86,7 +93,7 @@ function login(){
 function register(){
     const email = $("#email-registration").val();
     const password = $("#password-registration").val();
-    console.log(email,password)
+    // console.log(email,password)
     $.ajax({
         url:baseUrl+"/register",
         method: 'post',
@@ -96,10 +103,15 @@ function register(){
         }
     })
         .done(() => {
+            Swal.fire('Succes', 'Success sign up','success')
             checkLocalStorage();
         })
         .fail((err) => {
-            console.log(err);
+            if(!email || !password){
+                Swal.fire('Error', 'email or password is required','error')
+            }else{
+                Swal.fire('Error', 'email or password invalid','error')
+            }
         })
         .always(()=> {
             $("#email-registration, #password-registration").val("");
@@ -175,8 +187,7 @@ function getDataHospital(province){
             $("#judul-rs").append(`
             <h2 class="text-center">Data Rumah Sakit <br> Di Provinsi ${province}</h2>
             `)
-            let i = 1;
-            response.forEach( e => {
+            response.forEach( (e,i) => {
                 $("#data-hospital").append(
                     `
                     <tr>
@@ -188,7 +199,6 @@ function getDataHospital(province){
                     </tr>
                     `
                 )
-                i++;
             })
         })
 
@@ -232,6 +242,7 @@ function logout(){
     auth2.signOut().then(function() {
         console.log('User signed out.');
     })
+    Swal.fire('Succes', 'Success logout','success')
     checkLocalStorage();
     $("#judul-rs").empty();
     $("#data-hospital").empty();
@@ -266,7 +277,7 @@ function onSignIn(googleUser) {
         }
     })
     .done((response) => {
-        console.log(response);
+        Swal.fire('Succes', 'Success login','success')
         localStorage.setItem("access_token", response.access_token)
         checkLocalStorage();
         getDataTotalCovid();
@@ -275,5 +286,4 @@ function onSignIn(googleUser) {
     .fail((err) => {
         console.log(err);
     })
-  
 }
