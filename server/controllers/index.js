@@ -117,7 +117,7 @@ class Controller {
     static viewHealthNews(req, res){
         axios({
             method: 'GET',
-            url: "http://newsapi.org/v2/top-headlines?q=COVID-19&country=id&category=health&apiKey=d367e5c5c5d744869d21c4e37d195f2c"
+            url: `http://newsapi.org/v2/top-headlines?q=COVID-19&country=id&category=health&apiKey=${process.env.NEWS_API}`
         })
             .then(news => {
                 const randomNews = random(news.data);
