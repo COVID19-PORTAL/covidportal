@@ -18,7 +18,7 @@ class Controller {
                 res.status(201).json({
                     msg : 'register success', 
                     id : data.id,
-                    email : data.email,
+                    email : data.email
                 })
             })
             .catch(err => {
@@ -41,14 +41,15 @@ class Controller {
                         }, process.env.SECRET_KEY)
                         res.status(200).json({token})
                     }else{
-                        res.status(400).json({msg : 'invalid user or password'})
+                        throw new Error(res.status(400).json({msg : 'invalid user or password', email}))
                     }
                 }else{
-                    res.status(400).json({msg : 'invalid user or password'})
+                    throw new Error(res.status(400).json({msg : 'invalid user or password', email}))
                 }
             })
             .catch(err => {
                 res.status(500).json(err)
+                // console.log(err.message, err.email);
             })
     }
 
