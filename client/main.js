@@ -1,9 +1,6 @@
 const baseUrl = 'http://localhost:3000'
 $("document").ready(()=>{
-    $("#login-page").show();
-    $("#register-page").hide();
-    $("#home-page").hide();
-    $("#rumah-sakit").hide();
+    checkLocalStorage();
 
     $("#btn-submit").on("click", (e) => {
         e.preventDefault();
@@ -73,7 +70,7 @@ function login(){
         }
     })
         .done((response) => {
-            localStorage.setItem("token", response.token);
+            localStorage.setItem("access_token", response.token);
             checkLocalStorage();
             getDataTotalCovid();
             getDataCovidProvince();
@@ -114,7 +111,7 @@ function getDataTotalCovid(){
         url: baseUrl+"/covid/total",
         method:'get',
         headers: {
-            access_token: localStorage.token
+            access_token: localStorage.access_token
         }
     })
         .done((response) => {
@@ -132,7 +129,7 @@ function getDataCovidProvince(){
         url: baseUrl+"/covid",
         method:'get',
         headers: {
-            access_token: localStorage.token
+            access_token: localStorage.access_token
         }
     })
         .done((response) => {
@@ -144,7 +141,7 @@ function getDataCovidProvince(){
                         <tr>
                         <th class="no" >${i+1}</th>
                         <td>
-                        <a href = "#" id="${covids[i].province}" onclick = "getDataHospital('${covids[i].province}');"> ${covids[i].province} </a>
+                        <a href = "#" style="text-decoration: none;" id="${covids[i].province}" onclick = "getDataHospital('${covids[i].province}');"> ${covids[i].province} </a>
                         </td>
                         <td>${covids[i].kasus.toLocaleString()}</td>
                         <td>${covids[i].sembuh.toLocaleString()}</td>
@@ -171,7 +168,7 @@ function getDataHospital(province){
         url: baseUrl+`/hospital/${province}`,
         method: 'get',
         headers: {
-            access_token: localStorage.token
+            access_token: localStorage.access_token
         }
     })
         .done(response => {
@@ -199,10 +196,11 @@ function getDataHospital(province){
         url: baseUrl+"/news",
         method: 'get',
         headers: {
-            access_token: localStorage.token
+            access_token: localStorage.access_token
         }
     })
         .done(response => {
+            console.log(response);
             response.forEach( e => {
                 $("#news").append(`
                 <div class="col-6">
@@ -229,21 +227,31 @@ function getDataHospital(province){
 }
 
 function logout(){
-    localStorage.removeItem("token");
+    localStorage.removeItem("access_token");
+    var auth2 = gapi.auth2.getAuthInstance()
+    auth2.signOut().then(function() {
+        console.log('User signed out.');
+    })
     checkLocalStorage();
+    $("#judul-rs").empty();
+    $("#data-hospital").empty();
+    $("#data-covid").empty();
 }
 
 function checkLocalStorage(){
-    if(localStorage.token){
+    if(localStorage.access_token){
         $("#login-page").hide();
         $("#register-page").hide();
         $("#home-page").show();
         $("#rumah-sakit").hide();
+        getDataTotalCovid();
+        getDataCovidProvince();
     } else {
         $("#login-page").show();
         $("#register-page").hide();
         $("#home-page").hide();
         $("#rumah-sakit").hide();
+        
     }
 }
 
@@ -256,18 +264,14 @@ function onSignIn(googleUser) {
             token: id_token
         }
     })
-    // .done((response) => {
-    //     localStorage.setItem(response.access_token)
-    //     checkLocalStorage()
-    // })
-    // .fail((err) => {
-    //     console.log(err);
-    // })
-}
-
-function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance()
-    auth2.signOut().then(function() {
-        console.log('User signed out.');
+    .done((response) => {
+        localStorage.setItem("access_token", response.access_token)
+        checkLocalStorage();
+        getDataTotalCovid();
+        getDataCovidProvince();
     })
+    .fail((err) => {
+        console.log(err);
+    })
+  
 }

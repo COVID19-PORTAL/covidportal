@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-signin-client_id" content="486484357060-ea9qje9ra12tctdgrkti8cvf051292j0.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="857917614932-qisgfv37nc3midug1n59mbk5fmqnr2m4.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
     <!-- Bootstrap CSS -->
@@ -18,6 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style/styyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <title>Portal Covid</title>
 </head>
 
@@ -52,16 +53,14 @@
                                 <h6>Not a member ? <a href="" id="sign-up"> Sign Up</a></h6>
                             </div>
 
-                            <button type="submit" id="btn-submit" class="btn btn-primary col-12 py-2">Submit</button>
+                            <div class="row ">
+                                <button type="submit" id="btn-submit" class="btn btn-primary col-8 py-1">Sign In</button>
+                                <div class="g-signin2 col-2 py-1" data-onsuccess="onSignIn"></div>
+                            </div>
                         </form>
                         <br>
-                        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                        <br>
-                        <button onclick="signOut()">Logout</button>
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" 
-                            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" 
-                            crossorigin="anonymous">
-                        </script>
+                        
+                        
                     </div>
                 </div>
             </div>
@@ -103,10 +102,6 @@
                         <div class="g-signin2" id="btn-submit" data-onsuccess="onSignIn"></div>
                         <br>
                         <button onclick="signOut()">Logout</button>
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" 
-                            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" 
-                            crossorigin="anonymous">
-                        </script>
                     </div>
                 </div>
             </div>
@@ -116,7 +111,7 @@
         <!-- Home -->
         <div id="home-page">
             <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg navbar-light bg-nav sticky-top">
+            <nav class="navbar navbar-expand-lg navbar-light bg-nav fixed-top">
                 <div class="container-fluid">
                     <span class="navbar-brand mb-0 h1 "> 
                         <a href="" id="home" style="text-decoration: none;"> <h3 class="font-weight-bold" style="color: #F2C84C;">Covid-Portal·</h3> </a>
@@ -141,11 +136,11 @@
 
             <!-- Hero section -->
 
-            <div class="py-5 mx-auto">
+            <div class="py-5 my-5 mx-auto">
                 <h1 class="font-weight-bold text-center font-hero">Stay home, save lives, <br> we can do it</h1>
 
             </div>
-            <div class="mx-auto d-flex jusitify-content-center pt-5"><img src="./img/banner-img.png"
+            <div class="mx-auto d-flex jusitify-content-center pt-5 "><img src="./img/banner-img.png"
                     class="w-50 mx-auto" alt=""></div>
 
             <!-- End Hero section -->
@@ -280,7 +275,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
         crossorigin="anonymous"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" 
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" 
+        crossorigin="anonymous">
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./main.js"></script>
 
