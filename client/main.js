@@ -244,6 +244,7 @@ function checkLocalStorage(){
         $("#register-page").hide();
         $("#home-page").show();
         $("#rumah-sakit").hide();
+
         getDataTotalCovid();
         getDataCovidProvince();
     } else {
@@ -265,6 +266,7 @@ function onSignIn(googleUser) {
         }
     })
     .done((response) => {
+        console.log(response);
         localStorage.setItem("access_token", response.access_token)
         checkLocalStorage();
         getDataTotalCovid();
