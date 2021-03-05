@@ -1,9 +1,6 @@
 const baseUrl = 'http://localhost:3000'
 $("document").ready(()=>{
-    $("#login-page").show();
-    $("#register-page").hide();
-    $("#home-page").hide();
-    $("#rumah-sakit").hide();
+    checkLocalStorage()
 
     $("#btn-submit").on("click", (e) => {
         e.preventDefault();
@@ -239,6 +236,9 @@ function checkLocalStorage(){
         $("#register-page").hide();
         $("#home-page").show();
         $("#rumah-sakit").hide();
+
+        getDataTotalCovid();
+        getDataCovidProvince();
     } else {
         $("#login-page").show();
         $("#register-page").hide();
