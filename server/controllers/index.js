@@ -41,10 +41,10 @@ class Controller {
                         }, process.env.SECRET_KEY)
                         res.status(200).json({token})
                     }else{
-                        throw new Error(res.status(400).json({msg : 'invalid user or password', email}))
+                        throw new Error(res.status(400).json({msg : 'invalid email or password', email}))
                     }
                 }else{
-                    throw new Error(res.status(400).json({msg : 'invalid user or password', email}))
+                    throw new Error(res.status(400).json({msg : 'invalid email or password', email}))
                 }
             })
             .catch(err => {
@@ -71,15 +71,16 @@ class Controller {
                 }
             })
             .then(user => {
-                let payload = {id: user.id, email: user.email}
+                let data = user[0];
+                let payload = {id: data.id, email: data.email}
                 res.status(200).json({
                     id: payload.id,
                     email: payload.email,
-                    access_token: generateToken(payload)
+                    access_token: generate(payload)
                 })
             })
         }
-        verify().catch(console.error)
+        verify().catch(console.table)
     }
 
     static findAll(req, res) {
