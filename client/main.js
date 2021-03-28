@@ -93,7 +93,7 @@ function login(){
 function register(){
     const email = $("#email-registration").val();
     const password = $("#password-registration").val();
-    // console.log(email,password)
+    console.log(email,password)
     $.ajax({
         url:baseUrl+"/register",
         method: 'post',
@@ -213,10 +213,10 @@ function getDataHospital(province){
             console.log(response);
             response.forEach( e => {
                 $("#news").append(`
-                <div class="col-6">
-                    <div class="card mb-5 mx-auto" style="width: 25rem;">
+                <div class="col-4">
+                    <div class="card mb-5 mx-auto" style="width: 25rem; height: 26rem">
                         <a href="${e.url}" target="_blank"><img src="${e.urlToImage}"
-                            class="card-img-top h-100 py-3 px-3 w-100" alt="..."></a>
+                            class="card-img-top py-3 px-3 w-100" alt="..." style="height: 250px"></a>
                         <div class="card-body ">
                             <div class="d-flex justify-content-between">
                                 <div>

@@ -13,6 +13,7 @@ class Controller {
             email : req.body.email,
             password : req.body.password
         }
+        console.log(newUser)
         User.create(newUser)
             .then(data => {
                 res.status(201).json({
