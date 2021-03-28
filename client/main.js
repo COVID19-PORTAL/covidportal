@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3000'
+const baseUrl = 'https://portal-covid-19.herokuapp.com'
 $("document").ready(()=>{
     checkLocalStorage();
 
